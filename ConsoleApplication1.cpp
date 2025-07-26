@@ -26,15 +26,10 @@ struct Task {
         task.completed = (completedStr == "1");
         return task;
     }
-};
-
-// Global task list
-vector<Task> tasks;
-
-// File path for saving
+}; 
+vector<Task> tasks; 
 const string FILE_NAME = "tasks.txt";
-
-// Load tasks from file
+ 
 void loadTasks() {
     ifstream file(FILE_NAME);
     string line;
@@ -44,18 +39,14 @@ void loadTasks() {
         }
     }
     file.close();
-}
-
-// Save tasks to file
+} 
 void saveTasks() {
     ofstream file(FILE_NAME);
     for (const Task& task : tasks) {
         file << task.toString() << endl;
     }
     file.close();
-}
-
-// Add a task
+} 
 void addTask() {
     Task task;
     cout << "Enter task description: ";
@@ -67,8 +58,7 @@ void addTask() {
     tasks.push_back(task);
     cout << "Task added.\n";
 }
-
-// View tasks with optional filter
+ 
 void viewTasks(bool completedOnly = false, const string& filterCategory = "") {
     cout << "\n--- Task List ---\n";
     int index = 1;
@@ -81,9 +71,7 @@ void viewTasks(bool completedOnly = false, const string& filterCategory = "") {
             << (task.completed ? "(Completed)" : "(Pending)") << endl;
     }
     if (index == 1) cout << "No tasks to show.\n";
-}
-
-// Mark task as completed
+} 
 void markCompleted() {
     viewTasks(false);
     cout << "Enter task number to mark as completed: ";
@@ -97,8 +85,7 @@ void markCompleted() {
         cout << "Invalid task number.\n";
     }
 }
-
-// Remove task
+ 
 void removeTask() {
     viewTasks();
     cout << "Enter task number to remove: ";
@@ -111,18 +98,14 @@ void removeTask() {
     else {
         cout << "Invalid task number.\n";
     }
-}
-
-// Filter tasks by category
+} 
 void filterByCategory() {
     string category;
     cout << "Enter category to filter: ";
     cin.ignore();
     getline(cin, category);
     viewTasks(false, category);
-}
-
-// Menu
+} 
 void showMenu() {
     cout << "\n=== To-Do List Menu ===\n";
     cout << "1. Add Task\n";
